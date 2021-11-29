@@ -28,7 +28,7 @@ def load_data(link):
     df = df.loc[df['Stock Name'].str[-2:] != '-T'] ### Filters out stocks which are trading only under the NASDAQ-AMEX pilot program
     df['Date']= pd.to_datetime(df['Date'], dayfirst = True)### converts date to datetime variable
     return df
-link = r'C:\Users\angus\OneDrive - epiphroncapital.com\文件\Research\Streamlit Apps\SFC.xlsx'
+link = r'SFC.xlsx'
 df = load_data(link)
 
 slider = st.slider("Select Market Cap in 100's of millions", min_value=0, value=(0,5000) ,max_value=5000)
