@@ -291,8 +291,8 @@ st.write('Cansino Bio, the most % shares shorted, has seen steep % share shorted
 st.write('PA Good Doctor, the 2nd most % shares shorted as of Nov 19 has steadily been decreasing in price while its % share shorted has been steadily growing.')
 st.write ('Wuxi Apptec, the 3rd most % shares shorted and the most aggregate $ value shorted, has had a non-inverse relationship reflecting the risky nature of its business and the various position of investors.')
 
-st.write ('As of Nov 19, 2021')
+st.write ('Chart below only shows short data from Nov 19, 2021')
 df1
 
 ## Add a download button that gives the whole excel file. Just attach the link to github
-## st.write("Download the full data file [link](https://share.streamlit.io/mesmith027/streamlit_webapps/main/MC_pi/streamlit_app.py)")
+st.write("Download the full data file [link](https://github.com/epiphronquant/HKEX_shortsell/raw/main/SFC.xlsx)")
