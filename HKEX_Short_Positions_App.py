@@ -290,7 +290,7 @@ df1 = df1.merge(dict1, on='Stock Name', how='left')
 st.write('Cansino Bio, the most % shares shorted, has seen steep % share shorted growth from Aug 6th to Aug 27th. There has been a corresponding drop in stock price since then.')
 st.write('PA Good Doctor, the 2nd most % shares shorted as of Nov 19 has steadily been decreasing in price while its % share shorted has been steadily growing.')
 st.write ('Wuxi Apptec, the 3rd most % shares shorted and the most aggregate $ value shorted, has had a non-inverse relationship reflecting the risky nature of its business and the various position of investors.')
-
+st.write('')
 st.write ('Chart below only shows short data from Nov 19, 2021')
 df1
 
