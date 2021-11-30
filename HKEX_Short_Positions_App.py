@@ -6,15 +6,11 @@ Created on Wed Nov 24 16:18:56 2021
 """
 import streamlit as st
 import pandas as pd
-import plotly.figure_factory as ff
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import plotly.express as px
-import numpy as np
 import investpy
 import yfinance as yf
-import base64
-from io import BytesIO
+
 
 st.set_page_config(layout="wide")
 st.title('HKEX Short Positions')
@@ -30,11 +26,14 @@ def load_data(link):
     return df
 link = r'SFC.xlsx'
 df = load_data(link)
+df = load_data(link)
 
-slider = st.slider("Select Market Cap in 100's of millions", min_value=0, value=(0,5000) ,max_value=5000)
+st.write('**Key Assumptions: Total shares used as denominator for Share Shorted % uses the most recent data on the HKEX website.**')
+st.write('**We only examine companies that are still listed on HKEX**')
+st.write ('All assumptions and further info can be found in [documentation](https://github.com/epiphronquant/HKEX_shortsell)')
+
+slider = st.slider("Select Market Cap in HKD 100's of million", min_value=0, value=(0,50000) ,max_value=50000)
 slider = tuple([100000000*x for x in slider])
-
-# if slider 
 df = df[df['Market Cap (Nov 24)'].between(slider [0], slider [1])]
 
 column_1, column_2 = st.columns(2) ### Divides page into 2 columns
@@ -230,6 +229,31 @@ st.plotly_chart(fig, use_container_width=True)
 st.write('Health Information Services has had a steady upward trend. The steep drop from July 30th to August 6th is due to Yidu Tech being added to the % shorted dataset. Ignoring these effects and examining both companies individually, the price has steadily been declining while the share shorted % is steadily climbing.')
 st.write('Interestingly, Diagnostics & Research has seen a steady decline in the average % share shorted whilst its share price has been steadily declining.')
 
+
+
+########## chart displaying key information of raw data
+df1 =     df.loc[df['Date'] == '2021-11-19 00:00:00']
+if select_central == 'Average':
+    df1 = df1.groupby(['Stock Name']).mean()
+
+else:
+    df1 = df1.groupby(['Stock Name']).median()
+df1 = df1.iloc [:,:-2]
+df1 = df1.drop(['Aggregated Reportable Short Positions (Shares)', 'Shares Outstanding'], axis =1)
+dict1 = df [['Stock Name', 'Stock Name CN','Industry']]
+
+dict1 = dict1.drop_duplicates(subset=None, keep='first', inplace=False)
+
+df1 = df1.merge(dict1, on='Stock Name', how='left')
+column_name = ["Stock Name", "Stock Name CN", "Stock Code", "Aggregated Reportable Short Positions (HK$)", "Share Shorted %", "Market Cap (Nov 24)", "Industry"]
+df1 = df1.reindex(columns=column_name)
+df1 ['Stock Code'] = df1['Stock Code'].astype(int)
+df1 = df1.set_index('Stock Name')
+df1 = df1.sort_values(by=['Share Shorted %'], ascending = False)
+st.write('')
+st.write ('Chart below only shows short data from Nov 19, 2021')
+df1
+
 ########## line chart on company
 performance = df [['Date', 'Stock Name', 'Yf Ticker', share_measurement]]
 
@@ -246,7 +270,9 @@ a = performance
 a.sort_values(by='Date', inplace=True)
 a = a.set_index ('Date')
 start = a.index[0].strftime('%Y-%m-%d')
-end = a.index[-1].strftime('%Y-%m-%d')
+end = a.index[-1]
+end = end + pd.DateOffset(1)
+end = end.strftime('%Y-%m-%d')
 ticker = a ['Yf Ticker']
 ticker = ticker[0]
 
@@ -271,28 +297,9 @@ fig.update_yaxes(title_text= industry + ' '+ select_central + ' '+ share_measure
 fig.update_yaxes(title_text= company + " Adjusted Closing Price", secondary_y=True)
 st.plotly_chart(fig, use_container_width=True)
 
-df1 =     df.loc[df['Date'] == '2021-11-19 00:00:00']
-
-
-if select_central == 'Average':
-    df1 = df1.groupby(['Stock Name']).mean()
-
-else:
-    df1 = df1.groupby(['Stock Name']).median()
-df1 = df1.iloc [:,:-2]
-df1 = df1.drop('Stock Code', axis =1)
-dict1 = df [['Stock Name', 'Industry']]
-
-dict1 = dict1.drop_duplicates(subset=None, keep='first', inplace=False)
-
-df1 = df1.merge(dict1, on='Stock Name', how='left')
-
 st.write('Cansino Bio, the most % shares shorted, has seen steep % share shorted growth from Aug 6th to Aug 27th. There has been a corresponding drop in stock price since then.')
 st.write('PA Good Doctor, the 2nd most % shares shorted as of Nov 19 has steadily been decreasing in price while its % share shorted has been steadily growing.')
 st.write ('Wuxi Apptec, the 3rd most % shares shorted and the most aggregate $ value shorted, has had a non-inverse relationship reflecting the risky nature of its business and the various position of investors.')
-st.write('')
-st.write ('Chart below only shows short data from Nov 19, 2021')
-df1
 
 ## Add a download button that gives the whole excel file. Just attach the link to github
-st.write("Download the full data file [link](https://github.com/epiphronquant/HKEX_shortsell/raw/main/SFC.xlsx)")
+st.write("[Download the full data file](https://github.com/epiphronquant/HKEX_shortsell/raw/main/SFC.xlsx)")
