@@ -19,7 +19,7 @@ https://www.sfc.hk/en/Regulatory-functions/Market/Short-position-reporting/Aggre
 
 **HKEX** (various links found in data file): Shares Outstanding, Stock Name CN, 
 
-**Chart by Chart Explanation**
+****Chart by Chart Explanation*****
 
 **Sector Company Count and (_Average or Median_) (_Share % Shorted or Aggregate Reportable Share Positions (HK$)_) as of _Date_**
 
