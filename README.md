@@ -3,16 +3,12 @@ Follow link to access the app: https://share.streamlit.io/epiphronquant/hkex_sho
 
 **Key Assumptions**
 
-Total shares used as denominator for Share Shorted % uses the most recent data on the HKEX website
-
-1. For dual class shares, total shares outstanding only refers to the component listed
-2. We only examine companies that are still listed on HKEX
-
-We do NOT examine ETFs
-
-We do NOT examine stocks on the NASDAQ-AMEX pilot program
-
-Market Cap is of November 24th
+1. Total shares used as denominator for Share Shorted % uses the most recent data on the HKEX website
+2. For dual class shares, total shares outstanding only refers to the component listed
+3. We only examine companies that are still listed on HKEX
+4. We do NOT examine ETFs
+5. We do NOT examine stocks on the NASDAQ-AMEX pilot program
+6. Market Cap is of November 24th
 
 **Data Sources**
 
