@@ -21,7 +21,7 @@ https://www.sfc.hk/en/Regulatory-functions/Market/Short-position-reporting/Aggre
 
 **Chart by Chart Explanation**
 
-Sector Company Count and _Average or Median_ _Share % Shorted or Aggregate Reportable Share Positions (HK$)_
+Sector Company Count and (_Average or Median_) (_Share % Shorted or Aggregate Reportable Share Positions (HK$)_)
 
 The blue bar counts the amount of companies in the respective sector. The red bar takes the average/median of the Share % Shorted/Aggregate Reportable Share Positions for companies in the respective sector.
 
