@@ -12,15 +12,12 @@ Follow link to access the app: https://share.streamlit.io/epiphronquant/hkex_sho
 
 **Data Sources**
 
-**SFC**: Date, Stock Code, Stock Name, Aggregated Reportable Short Positions (Shares), Aggregated Reportable Short Positions (HK$) 
+_SFC_: Date, Stock Code, Stock Name, Aggregated Reportable Short Positions (Shares), Aggregated Reportable Short Positions (HK$) 
 https://www.sfc.hk/en/Regulatory-functions/Market/Short-position-reporting/Aggregated-reportable-short-positions-of-specified-shares 
 
-**Yahoo Finance**: Sector, Industry, Market Cap
+_Yahoo Finance_: Sector, Industry, Market Cap
 
-**HKEX** (various links found in data file): Shares Outstanding, Stock Name CN, 
-
-
-
+_HKEX_ (various links found in data file): Shares Outstanding, Stock Name CN, 
 
 **Chart by Chart Explanation**
 
