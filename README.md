@@ -14,3 +14,12 @@ We do NOT examine ETFs
 We do NOT examine stocks on the NASDAQ-AMEX pilot program
 
 Market Cap is of November 24th
+
+**Data Sources**
+
+SFC: Date, Stock Code, Stock Name, Aggregated Reportable Short Positions (Shares), Aggregated Reportable Short Positions (HK$) 
+https://www.sfc.hk/en/Regulatory-functions/Market/Short-position-reporting/Aggregated-reportable-short-positions-of-specified-shares 
+
+Yahoo Finance: Sector, Industry, Market Cap
+
+HKEX (various links found in data file): Shares Outstanding, Stock Name CN, 
