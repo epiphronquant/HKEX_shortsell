@@ -27,7 +27,8 @@ def load_data(link):
 link = r'SFC.xlsx'
 df = load_data(link)
 
-st.write('**Key Assumptions: Total shares used as denominator for Share Shorted % uses the most recent data on the HKEX website.**')
+st.write('**Key Assumptions: **')
+st.write('**Total shares used as denominator for Share Shorted % uses the most recent data on the HKEX website.**')
 st.write('**For dual class shares, shares outstanding only refers to the component listed**')
 st.write('**We only examine companies that are still listed on HKEX**')
 st.write ('All assumptions and further info can be found in [documentation](https://github.com/epiphronquant/HKEX_shortsell)')
