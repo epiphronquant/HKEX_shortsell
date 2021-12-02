@@ -5,9 +5,8 @@ Follow link to access the app: https://share.streamlit.io/epiphronquant/hkex_sho
 
 Total shares used as denominator for Share Shorted % uses the most recent data on the HKEX website
 
-For dual class shares, total shares outstanding only refers to the component listed
-
-We only examine companies that are still listed on HKEX
+1. For dual class shares, total shares outstanding only refers to the component listed
+2. We only examine companies that are still listed on HKEX
 
 We do NOT examine ETFs
 
@@ -17,12 +16,12 @@ Market Cap is of November 24th
 
 **Data Sources**
 
-SFC: Date, Stock Code, Stock Name, Aggregated Reportable Short Positions (Shares), Aggregated Reportable Short Positions (HK$) 
+**SFC**: Date, Stock Code, Stock Name, Aggregated Reportable Short Positions (Shares), Aggregated Reportable Short Positions (HK$) 
 https://www.sfc.hk/en/Regulatory-functions/Market/Short-position-reporting/Aggregated-reportable-short-positions-of-specified-shares 
 
-Yahoo Finance: Sector, Industry, Market Cap
+**Yahoo Finance**: Sector, Industry, Market Cap
 
-HKEX (various links found in data file): Shares Outstanding, Stock Name CN, 
+**HKEX** (various links found in data file): Shares Outstanding, Stock Name CN, 
 
 **Chart by Chart Explanation**
 
