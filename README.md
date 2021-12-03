@@ -3,6 +3,7 @@ Follow link to access the app: https://share.streamlit.io/epiphronquant/hkex_sho
 
 Click, drag, and have fun
 
+This app analyses short position data on SEHK stocks published weekly by the SFC. There is a particular focus on healthcare stocks but all data can be viewed.
 
 **Key Assumptions**
 
