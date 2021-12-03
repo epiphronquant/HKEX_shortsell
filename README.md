@@ -20,7 +20,9 @@ https://www.sfc.hk/en/Regulatory-functions/Market/Short-position-reporting/Aggre
 
 2. _Yahoo Finance_: Sector, Industry, Market Cap
 
-3. _HKEX_ (various links found in data file): Shares Outstanding, Stock Name CN, 
+3. _HKEX_ (various links found in data file): Shares Outstanding, Stock Name CN
+
+Data_Gatherer.py was used to manually gather this data.
 
 **Chart by Chart Explanation**
 
