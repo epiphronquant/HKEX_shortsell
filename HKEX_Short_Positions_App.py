@@ -20,7 +20,7 @@ def load_data(link):
     df = df.loc[df['Stock Name'].str[-2:] != '-T'] ### Filters out stocks which are trading only under the NASDAQ-AMEX pilot program
     df['Date']= pd.to_datetime(df['Date'], dayfirst = True)### converts Date column to datetime variable
     return df
-link = r'C:\Users\angus\OneDrive - epiphroncapital.com\文件\Research\Streamlit Apps\SFC.xlsx'
+link = r'SFC.xlsx'
 df = load_data(link)
 st.write('**Cansino Bio, Ping An Good Doctor and Wuxi Apptec are the 3 most shorted healthcare stocks on the SEHK. Cansino and PA Good Doctor have a worrying increase in short selling whilst Wuxi Apptec reflects normal market speculation.**')
 st.write('**Key Assumptions: **')
