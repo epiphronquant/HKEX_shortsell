@@ -22,7 +22,7 @@ def load_data(link):
     return df
 link = r'SFC.xlsx'
 df = load_data(link)
-st.write('**Cansino Bio, Ping An Good Doctor and Wuxi Apptec are the 3 most shorted healthcare stocks on the SEHK. Cansino and PA Good Doctor have a worrying increase in short selling whilst Wuxi Apptec reflects normal market speculation.**')
+st.write('**Cansino Bio, Ping An Good Doctor and Wuxi Apptec are the 3 most shorted healthcare stocks on the SEHK. Cansino and PA Good Doctor have a worrying increase in short selling whilst Wuxi Apptec reflects normal market speculation. There are evident effects in the stock market of a recovery, regulatory crackdowns and energy shortage.**')
 st.write('**Key Assumptions: **')
 st.write('**Total shares used as denominator for Share Shorted % uses the most recent data on the HKEX website.**')
 st.write('**For dual class shares, shares outstanding only refers to the component listed**')
