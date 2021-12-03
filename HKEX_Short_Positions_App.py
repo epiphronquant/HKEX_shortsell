@@ -260,7 +260,7 @@ company = st.selectbox(
       companies)
 'You selected: ', company
 
-@st.cache(suppress_st_warning=False)
+@st.cache(suppress_st_warning=False, allow_output_mutation=True)
 def chart_6 (performance, company, share_measurement, sector):
     performance = performance.loc[performance['Stock Name'] == company]
     a = performance    
