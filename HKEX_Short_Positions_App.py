@@ -69,7 +69,7 @@ with column_1:### Sector Chart
     @st.cache(suppress_st_warning=False)
     def chart_1(df, share_measurement, select_central):
         chart1 = df [['Aggregated Reportable Short Positions (HK$)','Share Shorted %','Sector', 'Stock Name', 'Date']]
-        chart1 = chart1.loc[df['Date'] == '2021-11-19 00:00:00']
+        chart1 = chart1.loc[df['Date'] == '2021-11-26 00:00:00']
         a = chart1.groupby(['Stock Name','Sector']).count() ### gathers data by Lead 1
         a = a.groupby (['Sector']).count()
         industries = a.index
@@ -87,7 +87,7 @@ with column_1:### Sector Chart
             b = b[share_measurement]
         
         b = b.to_list()
-        fig = bar_chart(industries, a, b,"Sector Companies Count and " + select_central +' ' + share_measurement + ' as of ' + 'Nov 19, 2021' )
+        fig = bar_chart(industries, a, b,"Sector Companies Count and " + select_central +' ' + share_measurement + ' as of ' + 'Nov 26, 2021' )
         return fig  
     fig = chart_1(df, share_measurement, select_central)    
     st.plotly_chart(fig)
@@ -102,7 +102,7 @@ else:
 
 with column_2:### Industry Chart
     chart1 = df [['Aggregated Reportable Short Positions (HK$)','Share Shorted %', 'Stock Name', 'Industry', 'Date']]
-    chart1 = chart1.loc[df['Date'] == '2021-11-19 00:00:00']
+    chart1 = chart1.loc[df['Date'] == '2021-11-26 00:00:00']
 
     a = chart1.groupby(['Stock Name','Industry']).count() ### gathers data by Lead 1
     a = a.groupby (['Industry']).count()
@@ -120,7 +120,7 @@ with column_2:### Industry Chart
         b = b[share_measurement]
     
     b = b.to_list()
-    fig = bar_chart(industries, a, b,sector +' Sub Sector' +" Companies Count and " + select_central +' ' + share_measurement + ' as of ' + 'Nov 19, 2021')
+    fig = bar_chart(industries, a, b,sector +' Sub Sector' +" Companies Count and " + select_central +' ' + share_measurement + ' as of ' + 'Nov 26, 2021')
 
     st.plotly_chart(fig)
     st.write ('Interpretation: There are 36 biotech companies that can be shorted. An average of 1.6% of their shares are shorted. ')
@@ -223,7 +223,7 @@ st.write('Health Information Services has had a steady upward trend. The steep d
 st.write('Interestingly, Diagnostics & Research has seen a steady decline in the average % share shorted whilst its share price has been steadily declining.')
 
 ########## chart displaying key information of raw data
-df1 =     df.loc[df['Date'] == '2021-11-19 00:00:00']
+df1 =     df.loc[df['Date'] == '2021-11-26 00:00:00']
 
 @st.cache()
 def chart_5(df1, select_central, sector):
@@ -245,7 +245,7 @@ def chart_5(df1, select_central, sector):
     df1 = df1.sort_values(by=['Share Shorted %'], ascending = False)
     return df1
 st.write('')
-st.write ('Chart below only shows short data from Nov 19, 2021')
+st.write ('Chart below only shows short data from Nov 26, 2021')
 df1 = chart_5(df1, select_central, sector)
 df1
 
@@ -295,7 +295,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.write('Interpretation: In 2021, Hutchmeds shorted ranged from 0% to 0.2%. Hutchmeds adjusted close price ranged from 66 HKD to 45 HKD.')
 st.write('Cansino Bio, the most % shares shorted, has seen steep % share shorted growth from Aug 6th to Aug 27th. There has been a corresponding drop in stock price since then.')
-st.write('PA Good Doctor, the 2nd most % shares shorted as of Nov 19 has steadily been decreasing in price while its % share shorted has been steadily growing.')
+st.write('PA Good Doctor, the 2nd most % shares shorted as of Nov 26 has steadily been decreasing in price while its % share shorted has been steadily growing.')
 st.write ('Wuxi Apptec, the 3rd most % shares shorted and the most aggregate $ value shorted, has had a non-inverse relationship reflecting the risky nature of its business and the various position of investors.')
 
 ## Link to github where you can download the file
