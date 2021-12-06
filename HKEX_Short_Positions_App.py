@@ -22,7 +22,7 @@ def load_data(link):
     return df
 link = r'SFC.xlsx'
 df = load_data(link)
-st.write('**Cansino Bio, Ping An Good Doctor and Wuxi Apptec are the 3 most shorted healthcare stocks on the SEHK. Cansino and PA Good Doctor have a worrying increase in short selling whilst Wuxi Apptec reflects normal market speculation. There are evident effects in the stock market of a recovery, regulatory crackdowns and energy shortage.**')
+st.write('**Ping An Good Doctor, Cansino Bio and Wuxi Apptec are the 3 most shorted healthcare stocks on the SEHK. PA Good Doctor and Cansino have a worrying increase in short selling whilst Wuxi Apptec reflects normal market speculation. There are evident effects in the stock market of a recovery, regulatory crackdowns and energy shortage.**')
 st.write('**Key Assumptions: **')
 st.write('**Total shares used as denominator for Share Shorted % uses the most recent data on the HKEX website.**')
 st.write('**For dual class shares, shares outstanding only refers to the component listed**')
@@ -294,8 +294,8 @@ fig = chart_6(performance, company, share_measurement, sector)
 st.plotly_chart(fig, use_container_width=True)
 
 st.write('Interpretation: In 2021, Hutchmeds shorted ranged from 0% to 0.2%. Hutchmeds adjusted close price ranged from 66 HKD to 45 HKD.')
-st.write('Cansino Bio, the most % shares shorted, has seen steep % share shorted growth from Aug 6th to Aug 27th. There has been a corresponding drop in stock price since then.')
-st.write('PA Good Doctor, the 2nd most % shares shorted as of Nov 26 has steadily been decreasing in price while its % share shorted has been steadily growing.')
+st.write('PA Good Doctor, the most % shares shorted as of Nov 26 has steadily been decreasing in price while its % share shorted has been steadily growing.')
+st.write('Cansino Bio, the 2nd most % shares shorted, has seen steep % share shorted growth from Aug 6th to Aug 27th. There has been a corresponding drop in stock price since then.')
 st.write ('Wuxi Apptec, the 3rd most % shares shorted and the most aggregate $ value shorted, has had a non-inverse relationship reflecting the risky nature of its business and the various position of investors.')
 
 ## Link to github where you can download the file
