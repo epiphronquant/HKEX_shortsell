@@ -223,7 +223,7 @@ st.write('Health Information Services has had a steady upward trend. The steep d
 st.write('Interestingly, Diagnostics & Research has seen a steady decline in the average % share shorted whilst its share price has been steadily declining.')
 
 ########## chart displaying key information of raw data
-df1 =     df.loc[df['Date'] == '2021-11-26 00:00:00']
+df1 = df.loc[df['Date'] == '2021-11-26 00:00:00']
 
 @st.cache()
 def chart_5(df1, select_central, sector):
