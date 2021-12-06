@@ -93,7 +93,7 @@ with column_1:### Sector Chart
     st.plotly_chart(fig)
 
     st.write('Interpretation: Real Estate has 136 companies that can be shorted. On average, 1% of their outstanding shares are shorted.')
-    st.write('Energy, Technology and Healthcare are the most on average % shorted stocks and average by $ value shorted stocks the past year. This suggests that healthcare and technology stocks are overvalued and overweighted due regulatory concerns. Energy due to the energy shortage.')
+    st.write('Energy, Technology and Healthcare are the most on average % shorted stocks and average by $ value shorted stocks on Nov 26. This suggests that healthcare and technology stocks are overvalued and overweighted due regulatory concerns. Energy due to the energy shortage.')
 
 if sector == 'All':
     df = df 
@@ -124,7 +124,7 @@ with column_2:### Industry Chart
 
     st.plotly_chart(fig)
     st.write ('Interpretation: There are 36 biotech companies that can be shorted. An average of 1.6% of their shares are shorted. ')
-    st.write ('Health Information Services and Diagnostic and Research are among the top 3 for both % shorted stock and average $ value shorted the past year. Health Information Services only includes Yidu Tech and Ping An Good Doctor. Diagnostic & Research notably include Wuxi Apptec and Tigermed.')
+    st.write ('Health Information Services and Diagnostic and Research are among the top 3 for both % shorted stock and average $ value shorted on Nov 26. Health Information Services only includes Yidu Tech and Ping An Good Doctor. Diagnostic & Research notably include Wuxi Apptec and Tigermed.')
 ### Sector performance with short measurement chart
 performance = df [['Date', share_measurement]]
 if select_central == 'Average':
