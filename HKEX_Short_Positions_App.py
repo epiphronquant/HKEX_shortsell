@@ -69,7 +69,7 @@ with column_1:### Sector Chart
     @st.cache(suppress_st_warning=False)
     def chart_1(df, share_measurement, select_central):
         chart1 = df [['Aggregated Reportable Short Positions (HK$)','Share Shorted %','Sector', 'Stock Name', 'Date']]
-        chart1 = chart1.loc[df['Date'] == '2021-12-03 00:00:00']
+        chart1 = chart1.loc[df['Date'] == '2021-12-3 00:00:00']
         a = chart1.groupby(['Stock Name','Sector']).count() ### gathers data by Lead 1
         a = a.groupby (['Sector']).count()
         industries = a.index
@@ -102,7 +102,7 @@ else:
 
 with column_2:### Industry Chart
     chart1 = df [['Aggregated Reportable Short Positions (HK$)','Share Shorted %', 'Stock Name', 'Industry', 'Date']]
-    chart1 = chart1.loc[df['Date'] == '2021-12-03 00:00:00']
+    chart1 = chart1.loc[df['Date'] == '2021-12-3 00:00:00']
 
     a = chart1.groupby(['Stock Name','Industry']).count() ### gathers data by Lead 1
     a = a.groupby (['Industry']).count()
@@ -223,7 +223,7 @@ st.write('Health Information Services has had a steady upward trend. The steep d
 st.write('Interestingly, Diagnostics & Research has seen a steady decline in the average % share shorted whilst its share price has been steadily declining.')
 
 ########## chart displaying key information of raw data
-df1 = df.loc[df['Date'] == '2021-12-03 00:00:00']
+df1 = df.loc[df['Date'] == '2021-12-3 00:00:00']
 
 @st.cache()
 def chart_5(df1, select_central, sector):
