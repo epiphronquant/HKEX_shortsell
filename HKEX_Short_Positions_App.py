@@ -14,7 +14,7 @@ import yfinance as yf
 st.set_page_config(layout="wide")
 st.title('HKEX Short Positions')
 
-@st.cache(ttl= 600)
+@st.cache(ttl= 10)
 def load_data(link):
     df = pd.read_excel(link,sheet_name='Sheet1', header = 0, engine = 'openpyxl', parse_dates = False)
     df = df.loc[df['Listed?'] == 1] ### Filters rows where it is still listed
