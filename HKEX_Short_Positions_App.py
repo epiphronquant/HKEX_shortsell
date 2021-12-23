@@ -9,6 +9,8 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import investpy
 import yfinance as yf
+from streamlit.ScriptRunner import RerunException
+raise RerunException
 st.set_page_config(layout="wide")
 st.title('HKEX Short Positions')
 
