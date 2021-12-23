@@ -25,7 +25,6 @@ def load_data(link):
 link = r'SFC.xlsx'
 df = load_data(link)
 
-# st.write('**Ping An Good Doctor, Cansino Bio and Wuxi Apptec are the 3 most shorted healthcare stocks on the SEHK. PA Good Doctor and Cansino have a worrying increase in short selling whilst Wuxi Apptec reflects normal market speculation. There are evident effects in the stock market of a recovery, regulatory crackdowns and energy shortage.**')
 st.write('**Key Assumptions: **')
 st.write('**Total shares used as denominator for Share Shorted % uses data from the HKEX website on Dec 21.**')
 st.write('**For dual class shares, shares outstanding only refers to the component listed**')
@@ -97,9 +96,6 @@ with column_1:### Sector Chart
     fig = chart_1(df, share_measurement, select_central)    
     st.plotly_chart(fig)
 
-    # st.write('Interpretation: Real Estate has 136 companies that can be shorted. On average, 1% of their outstanding shares are shorted.')
-    # st.write('Energy, Technology and Healthcare are the most on average % shorted stocks and average by $ value shorted stocks on Nov 26. This suggests that healthcare and technology stocks are overvalued and overweighted due regulatory concerns. Energy due to the energy shortage.')
-
 if sector == 'All':
     df = df 
 else:
@@ -130,9 +126,7 @@ with column_2:### Industry Chart
     fig = bar_chart(industries, a, b,sector +' Sub Sector' +" Companies Count and " + select_central +' ' + share_measurement + ' as of ' + date)
 
     st.plotly_chart(fig)
-    # st.write ('Interpretation: There are 36 biotech companies that can be shorted. An average of 1.6% of their shares are shorted. ')
-    # st.write ('Health Information Services and Diagnostic and Research are among the top 3 for both % shorted stock and average $ value shorted on Nov 26. Health Information Services only includes Yidu Tech and Ping An Good Doctor. Diagnostic & Research notably include Wuxi Apptec and Tigermed.')
-### Sector performance with short measurement chart
+    ### Sector performance with short measurement chart
 performance = df [['Date', share_measurement]]
 if select_central == 'Average':
     a = performance.groupby(['Date']).mean()
@@ -175,8 +169,6 @@ fig.update_xaxes(title_text="Date")
 fig.update_yaxes(title_text= sector+ ' ' + select_central + ' '+ share_measurement, secondary_y=False)
 fig.update_yaxes(title_text= index + ' '+ "Level", secondary_y=True)
 st.plotly_chart(fig, use_container_width=True)
-# st.write('Interpretation: In 2021, the healthcare sectors average share shorted ranges from 1.7% to 2.1%. The Hang Seng healthcare index ranged from 8,362 points to 5,099 ponits.')
-# st.write('We can see a slight inverse relationship between the index and the % share shorted. Unrealistic steep drops in the % share shorted are due to new companies that report 0 shorted shares. Based on the trend line for the last 3 months, the healthcare sector looks heavily pessimistic. Energy, utilities, real estate, basic materials looks pessimistic. Consumer defensive, communication services, technology has been rather stable. Only financial services has been optimistic. This reflects the effects of a recovery, regulatory crackdowns and a energy shortage.')
 
 ######### make line chart on industry
 industry = industries
@@ -224,14 +216,28 @@ fig.update_yaxes(title_text= industry + ' '+ select_central + ' '+ share_measure
 fig.update_yaxes(title_text="Index Level", secondary_y=True)
 st.plotly_chart(fig, use_container_width=True)
 
-# st.write('Interpretation: In 2021, the biotech index average share shorted ranged from 1.1% to 1.6%. The Hang Seng healthcare index ranged from 8,362 points to 5,099 ponits.')
-# st.write('Health Information Services has had a steady upward trend. The steep drop from July 30th to August 6th is due to Yidu Tech being added to the % shorted dataset. Ignoring these effects and examining both companies individually, the price has steadily been declining while the share shorted % is steadily climbing.')
-# st.write('Interestingly, Diagnostics & Research has seen a steady decline in the average % share shorted whilst its share price has been steadily declining.')
-
 ########## chart displaying key information of raw data
+
+## add a column displaying stock with the highest monthly increase in shortsell
 
 date = df ['Date'].max()
 df1 = df.loc[df['Date'] == date]
+d = dt.timedelta(days=28) ## selects one month. This must be done in multiples of 7 given the SFC dataset
+date2 = date - d
+
+df2 = df.loc[df['Date'] == date2]
+df_2 = df1 [['Stock Code', 'Share Shorted %']]
+df2 = df2.rename(columns = {'Share Shorted %':'Share Shorted % -1 month'})
+
+df_2 = df_2 [['Stock Code', 'Share Shorted %']]
+
+df2 = df2.merge(df_2, on='Stock Code', how='left')
+df2 ['Last Month Share Short Pct Pt Change'] = df2 ['Share Shorted %'] - df2 ['Share Shorted % -1 month']
+df2 = df2 [['Last Month Share Short Pct Pt Change','Stock Code']]
+
+df1 = df1.merge(df2, on='Stock Code', how='left')
+
+
 date = date.strftime('%b %d, %Y')
 
 @st.cache()
@@ -241,14 +247,14 @@ def chart_5(df1, select_central, sector):
     
     else:
         df1 = df1.groupby(['Stock Name']).median()
-    df1 = df1.iloc [:,:-2]
+    df1 = df1.drop(columns = ['ETF?', 'Listed?'])
     df1 = df1.drop(['Aggregated Reportable Short Positions (Shares)', 'Shares Outstanding'], axis =1)
     dict1 = df [['Stock Name', 'Stock Name CN','Industry']]
     
     dict1 = dict1.drop_duplicates(subset=None, keep='first', inplace=False)
     
     df1 = df1.merge(dict1, on='Stock Name', how='left')
-    column_name = ["Stock Name", "Stock Name CN", "Stock Code", "Aggregated Reportable Short Positions (HK$)", "Share Shorted %", "Market Cap (Dec 21)", "Industry"]
+    column_name = ["Stock Name", "Stock Name CN", "Stock Code", "Aggregated Reportable Short Positions (HK$)", "Share Shorted %", 'Last Month Share Short Pct Pt Change', "Market Cap (Dec 21)", "Industry"]
     df1 = df1.reindex(columns=column_name)
     df1 ['Stock Code'] = df1['Stock Code'].astype(int)
     df1 = df1.sort_values(by=['Share Shorted %'], ascending = False)
@@ -259,15 +265,25 @@ df1 = chart_5(df1, select_central, sector)
 df1
 
 ########## line chart on company
-performance = df [['Date', 'Stock Name', 'Yf Ticker', share_measurement]]
+performance = df [['Date', 'Stock Name', 'Yf Ticker', 'Stock Code', share_measurement]]
 
 companies = performance['Stock Name']
 companies = companies.tolist()
 companies = list(dict.fromkeys(companies))
+tickers = performance['Stock Code']
+tickers = tickers.tolist()
+tickers = list(dict.fromkeys(tickers))
+companies.extend(tickers)
 company = st.selectbox(
-    'Which company are you interested in?',
+    'Which company/stock code are you interested in?',
       companies)
 'You selected: ', company
+
+if type(company) == int:
+    company = performance.loc[performance['Stock Code'] == company, 'Stock Name'] 
+    company = company.iloc[0]
+else:
+    pass    
 
 @st.cache(suppress_st_warning=False, allow_output_mutation=True)
 def chart_6 (performance, company, share_measurement, sector):
@@ -301,11 +317,6 @@ def chart_6 (performance, company, share_measurement, sector):
     return fig
 fig = chart_6(performance, company, share_measurement, sector)
 st.plotly_chart(fig, use_container_width=True)
-
-# st.write('Interpretation: In 2021, Hutchmeds shorted ranged from 0% to 0.2%. Hutchmeds adjusted close price ranged from 66 HKD to 45 HKD.')
-# st.write('PA Good Doctor, the most % shares shorted as of Nov 26 has steadily been decreasing in price while its % share shorted has been steadily growing.')
-# st.write('Cansino Bio, the 2nd most % shares shorted, has seen steep % share shorted growth from Aug 6th to Aug 27th. There has been a corresponding drop in stock price since then.')
-# st.write ('Wuxi Apptec, the 3rd most % shares shorted and the most aggregate $ value shorted, has had a non-inverse relationship reflecting the risky nature of its business and the various position of investors.')
 
 ## Link to github where you can download the file
 st.write("[Download the full data file](https://github.com/epiphronquant/HKEX_shortsell/raw/main/SFC.xlsx)")
