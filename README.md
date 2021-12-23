@@ -19,11 +19,11 @@ This app analyses short position data on SEHK stocks published weekly by the SFC
 1. _SFC_: Date, Stock Code, Stock Name, Aggregated Reportable Short Positions (Shares), Aggregated Reportable Short Positions (HK$) 
 https://www.sfc.hk/en/Regulatory-functions/Market/Short-position-reporting/Aggregated-reportable-short-positions-of-specified-shares 
 
-2. _Yahoo Finance_: Sector, Industry, Market Cap
+2. _Yahoo Finance_: Sector, Industry
 
-3. _HKEX_ (various links found in data file): Shares Outstanding, Stock Name CN
+3. _HKEX_ (various links found in data file): Shares Outstanding, Market Cap, Stock Name CN, Listed?, ETF? 
 
-Data_Gatherer.py was used to manually gather this data.
+manual_update.py was used to manually gather this data.
 
 **Chart by Chart Explanation**
 
