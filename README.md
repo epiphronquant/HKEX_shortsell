@@ -12,7 +12,7 @@ This app analyses short position data on SEHK stocks published weekly by the SFC
 3. We only examine companies that are still listed on HKEX
 4. We do NOT examine ETFs
 5. We do NOT examine stocks on the NASDAQ-AMEX pilot program
-6. Market Cap is of November 24th
+6. Market Cap is of Dec 12th
 
 **Data Sources**
 
