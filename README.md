@@ -1,4 +1,7 @@
 # HKEX Shortsell App
+
+[![hkex_short_updater](https://github.com/epiphronquant/HKEX_shortsell/actions/workflows/main.yml/badge.svg)](https://github.com/epiphronquant/HKEX_shortsell/actions/workflows/main.yml)
+
 Follow link to access the app: https://share.streamlit.io/epiphronquant/hkex_shortsell/main/HKEX_Short_Positions_App.py
 
 Click, drag, and have fun
