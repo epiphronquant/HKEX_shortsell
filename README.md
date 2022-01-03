@@ -26,7 +26,7 @@ https://www.sfc.hk/en/Regulatory-functions/Market/Short-position-reporting/Aggre
 
 3. _HKEX_ (various links found in data file): Shares Outstanding, Market Cap, Stock Name CN, Listed?, ETF? 
 
-manual_update.py was used to manually gather this data.
+manual_update.py was used to manually gather this data. The code doesn't run perfectly and needs manual intervention.
 
 **Chart by Chart Explanation**
 
