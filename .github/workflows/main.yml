@@ -1,9 +1,9 @@
 name: hkex_short_updater
 
-on:
-  schedule:
-    - cron: '0 4 * * 1' # runs at 04:00 UTC (noon Hong Kong time) every Monday. 
-#on: [workflow_dispatch]
+#on:
+  #schedule:
+    #- cron: '0 4 * * 1' # runs at 04:00 UTC (noon Hong Kong time) every Monday. 
+on: [workflow_dispatch]
 
 jobs:
   build:
