@@ -186,7 +186,9 @@ else:
     a = performance.groupby(['Date']).median()
     
 start = a.index[0].strftime('%d/%m/%Y')
-end = a.index[-1].strftime('%d/%m/%Y')
+# end = a.index[-1].strftime('%d/%m/%Y')
+end = dt.date.today()
+end = end.strftime('%d/%m/%Y')
 if index == 'Hang Seng Index':
     df_index = investpy.get_index_historical_data(index='Hang Seng',
                                         country='hong kong',
