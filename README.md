@@ -6,16 +6,16 @@ Follow link to access the app: https://share.streamlit.io/epiphronquant/hkex_sho
 
 Click, drag, and have fun
 
-This app analyses short position data on SEHK stocks published weekly by the SFC. There is a particular focus on healthcare stocks but all data can be viewed.
+This app analyses short position data on SEHK stocks published weekly by the SFC. It gets automatically updated every Monday, noon Hong Kong time.
 
 **Key Assumptions**
 
-1. Total shares used as denominator for Share Shorted % uses the most recent data available on the HKEX website
+1. Total shares used as denominator for Share Shorted % uses the most recent manually updated data available on the HKEX website
 2. For dual class shares, total shares outstanding only refers to the component listed
 3. We only examine companies that are still listed on HKEX
 4. We do NOT examine ETFs
 5. We do NOT examine stocks on the NASDAQ-AMEX pilot program
-6. Market Cap is of Dec 21st
+6. Market Cap is of Dec 21st 2020
 
 **Data Sources**
 
