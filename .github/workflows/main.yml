@@ -1,9 +1,9 @@
 name: hkex_short_updater
 
-on:
-  schedule:
-    - cron: '0 4 * * 1' # runs at 04:00 UTC (noon Hong Kong time) every Monday. 
-#on: [workflow_dispatch] ## button for running manually
+#on:
+  #schedule:
+    #- cron: '0 4 * * 1' # runs at 04:00 UTC (noon Hong Kong time) every Monday. 
+on: [workflow_dispatch] ## button for running manually
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
       - name: install python packages
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r updater_requirements.txt
           
       - name: execute py script # run sj-gobierno.py to get the latest data
         env: 
