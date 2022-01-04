@@ -16,6 +16,7 @@ This app analyses short position data on SEHK stocks published weekly by the SFC
 4. We do NOT examine ETFs
 5. We do NOT examine stocks on the NASDAQ-AMEX pilot program
 6. Market Cap is of Dec 21st, 2020
+7. New companies not on the old dataset needs to be manually added in to the excel sheet for it to run properly
 
 **Data Sources**
 
