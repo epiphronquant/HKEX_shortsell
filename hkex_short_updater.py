@@ -3,7 +3,6 @@
 Created on Mon Nov 22 12:30:34 2021
 @author: angus
 """
-
 import pandas as pd
 import datetime
 import requests
