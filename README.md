@@ -10,12 +10,12 @@ This app analyses short position data on SEHK stocks published weekly by the SFC
 
 **Key Assumptions**
 
-1. Total shares used as denominator for Share Shorted % uses the most recent manually updated data available on the HKEX website
+1. Total shares used as denominator for Share Shorted % uses the most recent (Dec 21st, 2020) manually updated data available on the HKEX website
 2. For dual class shares, total shares outstanding only refers to the component listed
 3. We only examine companies that are still listed on HKEX
 4. We do NOT examine ETFs
 5. We do NOT examine stocks on the NASDAQ-AMEX pilot program
-6. Market Cap is of Dec 21st 2020
+6. Market Cap is of Dec 21st, 2020
 
 **Data Sources**
 
