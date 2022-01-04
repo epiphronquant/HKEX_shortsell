@@ -1,6 +1,5 @@
 plotly
 pandas
 investpy
-requests
 openpyxl
 yfinance
