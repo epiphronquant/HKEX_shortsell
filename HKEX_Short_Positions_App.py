@@ -279,13 +279,13 @@ def chart_6 (performance, company, share_measurement, sector):
     a.sort_values(by='Date', inplace=True)
     a = a.set_index ('Date')
     start = a.index[0].strftime('%Y-%m-%d')
-    end = a.index[-1]
-    end = end + pd.DateOffset(1)
-    end = end.strftime('%Y-%m-%d')
+    #end = a.index[-1]
+    #end = end + pd.DateOffset(1)
+    #end = end.strftime('%Y-%m-%d')
     ticker = a ['Yf Ticker']
     ticker = ticker[0]
     
-    df_index = yf.download(ticker, start= start, end=end)
+    df_index = yf.download(ticker, start= start)
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     
     # Add traces
