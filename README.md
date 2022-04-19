@@ -6,7 +6,7 @@ Follow link to access the app: https://share.streamlit.io/epiphronquant/hkex_sho
 
 Click, drag, and have fun
 
-This app analyses short position data on SEHK stocks published weekly by the SFC. It gets automatically updated every Monday, 11am Hong Kong time.
+This app analyses short position data on SEHK stocks published weekly by the SFC. It gets automatically updated every Monday, 11am Hong Kong time. It needs to get manually updated when there is a public holiday in Hong Kong which results in the data not being released on Monday at 11am. 
 
 **Key Assumptions**
 
