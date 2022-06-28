@@ -15,7 +15,7 @@ df_main = pd.read_excel('SFC.xlsx',sheet_name = 'Sheet1')
 date = pd.to_datetime(df_main['Date'], dayfirst = True)
 date = date.max()
 
-d = datetime.timedelta(days=6) ## add a week
+d = datetime.timedelta(days=8) ## add a week
 date = date + d
 
 date1 = date.strftime('%Y%m%d')
