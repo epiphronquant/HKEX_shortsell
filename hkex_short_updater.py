@@ -32,7 +32,9 @@ sfc_date = sfc_date ['Reporting Date']
 sfc_date = sfc_date [0]
 
 if date2 == sfc_date:
-    pass
+    with pd.ExcelWriter('SFC.xlsx',
+                          mode='a', engine = 'openpyxl', if_sheet_exists = 'replace') as writer:  
+          df_main.to_excel(writer, sheet_name='Sheet1', index = False)
 else:
     sfc_date = datetime.datetime.strptime(sfc_date, '%d %b %Y') 
         
